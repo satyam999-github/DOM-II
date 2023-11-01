@@ -141,7 +141,7 @@
     function result(){
         if(+bag < +minValue.innerText && +bag < +maxValue.innerText){
             minValue.innerText= bag;
-        }else{
+        }else if(+bag > +maxValue.innerText && +bag > +minValue.innerText){
             maxValue.innerText= bag;
         }
         bag= "";
