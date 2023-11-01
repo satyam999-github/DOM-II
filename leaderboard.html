@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #main{
+        width: 50%;
+        margin: auto;
+        margin-top: 30px;
+    }
+    #head{
+        width: 40%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    #min>button{
+        width: 80px;
+        height: 60px;
+        background-color:orangered;
+        border: 2px solid black;
+        font-size: 20px;
+    }
+        
+    #max>button{
+        width: 80px;
+        height: 60px;
+        background-color: rgba(0, 128, 0, 0.789);
+        border: 2px solid black;
+        font-size: 20px;
+    }
+    #min>h3,#max>h3{
+        text-align: center;
+    }
+    #score{
+        width: 100%;
+        margin: auto;
+        justify-content: center;
+    }
+    #score>h3{
+        text-align: center;
+        font-weight: 100;
+        font-size: 30px;
+    }
+    #score>button{
+        margin-left: 260px;
+        width: 190px;
+        height: 70px;
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 50px;
+        border: 2px solid black;
+        background-color: rgba(216, 216, 216, 0.784);
+    }
+    #allbtn{
+        width: 20%;
+        display: grid;
+        margin: auto;
+        grid-template-columns: repeat(3,1fr);
+        gap: 18px;
+    }
+    #allbtn>button{
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    .end{
+        width: 170px;
+        height: 60px;
+        background-color: black;
+        color: white;
+        margin-left: 40%;
+        margin-top: 30px;
+        font-size: 20px;
+        
+    }
+    #allbtn>button:nth-child(1),#allbtn>button:nth-child(3),#allbtn>button:nth-child(7),#allbtn>button:nth-child(9){
+        background-color: green;
+        border: 1px solid black;
+    }
+    #allbtn>button:nth-child(2),#allbtn>button:nth-child(4),#allbtn>button:nth-child(5),#allbtn>button:nth-child(6),#allbtn>button:nth-child(8){
+        background-color: orangered;
+        border: 1px solid black;
+    }
+    #allbtn>button:nth-child(10){
+        margin-left: 148%;
+        background-color: purple;
+        color: white;
+    }
+    
+</style>
+<body>
+    <div id="main">
+        <div id="head">
+            <div id="min">
+                <button id="less">43</button>
+                <h3>MIN</h3>
+            </div>
+            <div id="max">
+                <button id="high">2019</button>
+                <h3>MAX</h3>
+            </div>
+        </div>
+        <div id="score">
+            <h3>SCORE</h3>
+            <button id="display">#</button>
+        </div>
+        <div id="allbtn">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>0</button>
+        </div>
+        <button class="end" onclick="result()">ENTER</button>
+    </div>
+</body>
+</html>
+<script>
+    let show= document.getElementById("display")
+    let allbtn= document.querySelectorAll('#allbtn > button');
+    let lastbtn= document.getElementsByClassName("end");
+    let bag= "";
+    for(let i=0; i<allbtn.length; i++){
+        allbtn[i].addEventListener('click',function(){
+            
+            bag+= allbtn[i].innerText;
+            show.innerText= bag;
+        })
+    }
+    let minValue= document.getElementById("less");
+    let maxValue= document.getElementById("high");
+    function result(){
+        if(+bag < +minValue.innerText && +bag < +maxValue.innerText){
+            minValue.innerText= bag;
+        }else{
+            maxValue.innerText= bag;
+        }
+        bag= "";
+    }
+</script>
